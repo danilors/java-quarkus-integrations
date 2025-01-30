@@ -1,23 +1,30 @@
 package br.com.person.entity;
 
-import io.quarkus.hibernate.reactive.panache.PanacheEntity;
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
-@Cacheable
-public class Person extends PanacheEntity {
+public class Person extends PanacheEntityBase {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(length = 40, unique = true)
     public String name;
 
     @Column(unique = true)
     public String email;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate birthdate;
 

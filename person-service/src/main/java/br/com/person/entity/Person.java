@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "person_tbl")
 public class Person extends PanacheEntityBase {
 
     @Id
